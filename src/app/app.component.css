@@ -5,3 +5,8 @@ p {
 ul li {
   list-style: none;
 }
+
+input:focus {
+  outline: 0 !important;
+  box-shadow: none;
+}

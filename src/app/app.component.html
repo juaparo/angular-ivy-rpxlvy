@@ -1,10 +1,17 @@
 <!--<hello name="{{ name }}"></hello> !-->
 
-<!--<<div>
+<div>
   <ul>
-    <li *ngFor="let b of carBrands; let i=index;">
-      <input #brand [checked]="b.ischecked" (click)="getSelected(carBrands[i].ischecked = !carBrands[i].ischecked)" [value]="b.ischecked" type="radio" name="brand">
-      <label [for]="b.name">{{b.name}}</label>
+    <li *ngFor="let b of carBrands">
+      <input
+            #brand
+            [checked]="b.ischecked"
+            (click)="getSelected(b, b.ischecked = !b.ischecked)"
+            value="b.ischecked"
+            type="radio"
+            name="brand"
+          />
+      <label [for]="b.name">{{ b.name }}</label>
     </li>
   </ul>
 </div>
@@ -25,4 +32,9 @@
       <label [for]="t.name">{{t.name}}</label>
     </li>
   </ul>
-</div>!-->
+</div>
+
+
+<div>
+  <input class="not-focus"  type="text" placeholder="Name">
+</div>

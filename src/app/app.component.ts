@@ -2,44 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  //templateUrl: './app.component.html',
-  template: `
-    <div>
-      <ul>
-        <li *ngFor="let b of carBrands; let i = index">
-          <input
-            #brand
-            [checked]="b.ischecked"
-            (click)="
-              getSelected((carBrands[i].ischecked = !carBrands[i].ischecked))
-            "
-            [value]="b.ischecked"
-            type="radio"
-            name="brand"
-          />
-          <label [for]="b.name">{{ b.name }}</label>
-        </li>
-      </ul>
-    </div>
-
-    <div>
-      <ul>
-        <li *ngFor="let c of carColors; let i = index">
-          <input type="radio" [value]="false" name="colors" />
-          <label [for]="c.name">{{ c.name }}</label>
-        </li>
-      </ul>
-    </div>
-
-    <div>
-      <ul>
-        <li *ngFor="let t of carTires; let i = index">
-          <input type="radio" [value]="false" name="tires" />
-          <label [for]="t.name">{{ t.name }}</label>
-        </li>
-      </ul>
-    </div>
-  `,
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
@@ -68,10 +31,9 @@ export class AppComponent implements OnInit {
    * el objecto que seleccione y que ademas tenga la propiedad
    * ischecked en true
    */
-  getSelected(checked) {
-    let brand = this.carBrands.filter(c => c.ischecked === checked);
-
-    console.log(brand);
+  getSelected(objchecked: any, val?: any) {
+    console.log('Item checked:', objchecked);
+    console.log('Array', this.carBrands);
   }
 
   ngOnInit() {}
