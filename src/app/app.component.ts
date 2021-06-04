@@ -1,13 +1,48 @@
-import { Component, OnInit, VERSION } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  templateUrl: './app.component.html',
+  //templateUrl: './app.component.html',
+  template: `
+    <div>
+      <ul>
+        <li *ngFor="let b of carBrands; let i = index">
+          <input
+            #brand
+            [checked]="b.ischecked"
+            (click)="
+              getSelected((carBrands[i].ischecked = !carBrands[i].ischecked))
+            "
+            [value]="b.ischecked"
+            type="radio"
+            name="brand"
+          />
+          <label [for]="b.name">{{ b.name }}</label>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <ul>
+        <li *ngFor="let c of carColors; let i = index">
+          <input type="radio" [value]="false" name="colors" />
+          <label [for]="c.name">{{ c.name }}</label>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <ul>
+        <li *ngFor="let t of carTires; let i = index">
+          <input type="radio" [value]="false" name="tires" />
+          <label [for]="t.name">{{ t.name }}</label>
+        </li>
+      </ul>
+    </div>
+  `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  name = 'Angular ' + VERSION.major;
-
   carBrands: any[] = [
     { name: 'Volvo', value: 'volvo', ischecked: false },
     { name: 'McLaren', value: 'mclaren', ischecked: false },
@@ -28,6 +63,11 @@ export class AppComponent implements OnInit {
 
   constructor() {}
 
+  /**
+   * Lo que busco es que al clickear en una me devuelva solo
+   * el objecto que seleccione y que ademas tenga la propiedad
+   * ischecked en true
+   */
   getSelected(checked) {
     let brand = this.carBrands.filter(c => c.ischecked === checked);
 
