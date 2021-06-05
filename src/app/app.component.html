@@ -3,11 +3,7 @@
 <div>
   <ul>
     <li *ngFor="let b of carBrands">
-      <input
-            #brand
-            [checked]="b.ischecked"
-            (click)="getSelected(b, b.ischecked = !b.ischecked)"
-            value="b.ischecked"
+      <input [checked]="b.ischecked" (click)="getSelected(b, 'brand', b.ischecked = !b.ischecked)"
             type="radio"
             name="brand"
           />
@@ -19,7 +15,7 @@
 <div>
   <ul>
     <li *ngFor="let c of carColors; let i=index;">
-      <input type="radio" [value]="false" name="colors">
+      <input (click)="getSelected(c,'color',c.ischecked = !c.ischecked)" [checked]="c.ischecked" type="radio" name="colors">
       <label [for]="c.name">{{c.name}}</label>
     </li>
   </ul>
@@ -28,13 +24,10 @@
 <div>
   <ul>
     <li *ngFor="let t of carTires; let i=index;">
-      <input type="radio" [value]="false" name="tires">
+      <input (click)="getSelected(t,'tire',t.ischecked = !t.ischecked)" type="radio" name="tires">
       <label [for]="t.name">{{t.name}}</label>
     </li>
   </ul>
 </div>
 
-
-<div>
-  <input class="not-focus"  type="text" placeholder="Name">
-</div>
+{{ order | json }}

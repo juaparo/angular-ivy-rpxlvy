@@ -24,6 +24,12 @@ export class AppComponent implements OnInit {
     { name: 'Continental', value: 'continental', ischecked: false }
   ];
 
+  order = {
+    brand: null,
+    color: null,
+    tire: null
+  };
+
   constructor() {}
 
   /**
@@ -31,9 +37,10 @@ export class AppComponent implements OnInit {
    * el objecto que seleccione y que ademas tenga la propiedad
    * ischecked en true
    */
-  getSelected(objchecked: any, val?: any) {
-    console.log('Item checked:', objchecked);
-    console.log('Array', this.carBrands);
+  getSelected(objchecked: any, type: string, val?: any) {
+    if (type === 'brand') this.order.brand = objchecked.value;
+    if (type === 'color') this.order.color = objchecked.value;
+    if (type === 'tire') this.order.tire = objchecked.value;
   }
 
   ngOnInit() {}
